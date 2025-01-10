@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.lookupButton.setOnClickListener {
             if (binding.binInput.text.toString().trim().isNotEmpty()) {
                 viewModel.fetchBankCardInfo(binding.binInput.text.toString().trim())
-
             }
         }
         var itemUi: ItemUi
