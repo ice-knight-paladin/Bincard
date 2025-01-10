@@ -12,6 +12,7 @@ class Core(
             ItemsDataBase::class.java,
             "items_database"
         )
+            .addMigrations(MIGRATION_1_2)
             .build()
     }
 

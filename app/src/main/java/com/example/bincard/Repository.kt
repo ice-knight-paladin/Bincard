@@ -2,7 +2,7 @@ package com.example.bincard
 
 interface Repository {
     open class Base(
-        private val dataSources: ItemDao,
+        private val dataSources: ItemsDao,
         private val now: Now
     ) : Repository {
         fun add(value: String) {

@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout.v220)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

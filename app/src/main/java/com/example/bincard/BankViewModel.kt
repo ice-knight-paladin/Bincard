@@ -6,7 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bincard.apii.BankCardRepository
+import com.example.bincard.models.Bank
 import com.example.bincard.models.BankCardInfo
+import com.example.bincard.models.Country
+import com.example.bincard.models.Number
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,17 +24,16 @@ class BankCardViewModel @Inject constructor(private val repository: BankCardRepo
     val cardInfo: LiveData<BankCardInfo> get() = _cardInfo
 
     fun fetchBankCardInfo(bin: String) {
-        Log.v("ffff", "ffffff")
+        Log.v("ffff", "${cardInfo.value}, ${cardInfo.value}")
         viewModelScope.launch(Dispatchers.Main) {
+            var info: BankCardInfo
             try {
-                val info = repository.getBankCardInfo(bin)
-                Log.v("ffff", "ffffff${info}")
-
-                _cardInfo.value = info
+                info = repository.getBankCardInfo(bin)
             } catch (e: Exception) {
-                // Обработка ошибок
-
+                info = BankCardInfo(Number(0,true), "", "", "", Country("", "", "", "", 0.0, 0.0), Bank("", "", "", ""))
             }
+            Log.v("ffff", "ffffff${info}")
+            _cardInfo.value = info
         }
     }
 }
